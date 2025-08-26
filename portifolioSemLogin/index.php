@@ -1,0 +1,129 @@
+<?php
+require_once("conexao.php");
+require_once("codigo.php");
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" 
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" 
+            crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="style.css">
+    <style>
+        #home{
+        background-color: rgba(100, 97, 97, 0.24);
+        border-radius: 10px;
+    }
+    img{
+        width:20px;
+        height:20px;
+    }
+
+</style>
+</head>
+<body>
+    <div class="container text-center mt-3">
+        <div class="row">
+            <p id="inicio">olá meu nome é Marco Antonio e este é meu portifólio <br> nele eu falarei um pouco sobre mim, meus conhecimentos, trabalhos e objetivos </p>
+        </div>
+        <div class="row">
+            <p id="boasvindas">Boa Leitura!! <i class="bi bi-book-fill"></i></p>
+        </div>
+    </div>
+    <div class="container text-center mt-5">
+        <div class="row">
+            <div class="col align-self-center clickable-question" 
+                 data-answer="Nome: Marco Antônio Freitas Dias </br>
+Idade: 16 anos</br>
+Onde moro: Ilhabela, SP</br>
+
+Um pouco sobre mim:</br>
+Nasci no dia 18/07/2009, em Curitiba–PR. Desde que nasci, meu pai construía um barco e, quando eu tinha 5 anos, esse barco foi para a água. Aos 10 anos, mais especificamente no dia 24 de agosto de 2019, fomos morar nele.
+
+Desde então, subi a costa do Brasil de veleiro junto com meu pai, minha mãe e meu cachorro. Quando a pandemia chegou, ficamos em Ubatuba e, depois que passou, fomos para Salvador, na Bahia. Lá moramos por cerca de um ano, até que, em 2022, vendemos o barco, compramos um maior e começamos a descer a costa em direção a Ilhabela.
+
+Aqui estudei por 2 anos na Escola Mércia (8º e 9º ano) e, atualmente, faço o 2º ano na ETEC, em São Sebastião (onde também cursei o 1º ano).">
+                <p id="per1">quem sou eu?</p>
+            </div>
+            <div class="col align-self-center clickable-question" 
+                 data-answer="<ul style='list-style-type: none;'>
+    <li>
+       <i class='bi bi-book'></i> ler livros
+    </li>
+    <li>
+       <i class='bi bi-laptop'></i> programar
+    </li>
+    <li>
+       <i class='bi bi-joystick'></i> jogar
+    </li>
+    <li>
+       <i class='bi bi-activity'></i> treinar na academia
+    </li>
+    <li>
+      <i class='bi bi-bicycle'></i> fazer esporte 
+    </li>
+    <li>
+       <i class='bi bi-plus'></i> aprender coisas novas
+    </li>
+</ul>">
+               <p id="per2">o que gosto de fazer?</p>
+            </div>
+            <div class="col align-self-center clickable-question" 
+                 data-answer="Atualmente, sou estudante do 2º ano do Ensino Médio integrado ao curso técnico na ETEC de São Sebastião, instituição pertencente ao Centro Paula Souza.
+
+Iniciei meus estudos na ETEC em 2024, onde tenho a oportunidade de conciliar a formação do ensino médio regular com uma qualificação profissional técnica. A escola conta com excelente infraestrutura, como laboratórios de informática bem equipados, biblioteca atualizada e um corpo docente qualificado.
+
+Ao longo da minha trajetória na instituição, venho desenvolvendo conhecimentos nas seguintes áreas:
+
+<ul> <li>Programação</li> <li>Matemática aplicada à programação</li> <li>Educação financeira</li> </ul>
+
+A metodologia da escola integra teoria e prática, preparando os alunos tanto para o vestibular quanto para o mercado de trabalho. Também tenho participado ativamente de projetos extracurriculares e eventos tecnológicos promovidos pela instituição.
+
+Estou muito satisfeito com a qualidade do ensino e com as oportunidades que a ETEC de São Sebastião tem proporcionado para minha formação acadêmica e profissional.">
+                <p id="per3">onde estudo?</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container mt-4">
+        <div class="col">
+            <p id="answer-text" class="text-center p-3 bg-light rounded">Clique em uma das perguntas acima para ver a resposta.</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const questions = document.querySelectorAll('.clickable-question');
+            const answerText = document.getElementById('answer-text');
+            
+            questions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.getAttribute('data-answer');
+                    answerText.innerHTML = answer;
+                    
+                    answerText.classList.add('bg-info', 'text-white');
+                    setTimeout(() => {
+                        answerText.classList.remove('bg-info', 'text-white');
+                        answerText.classList.add('bg-light');
+                    }, 300);
+                });
+            });
+            
+            questions.forEach(question => {
+                question.style.cursor = 'pointer';
+                question.classList.add('p-3', 'hover-effect');
+            });
+        });
+    </script>
+</body>
+</html> 
