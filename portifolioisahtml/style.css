@@ -1,0 +1,75 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+    .navbar.navbar-custom {
+        background-color: rgb(255, 217, 223) !important;
+    }
+    .navbar {
+    box-shadow: 0 4px 8px rgb(253, 153, 162);
+    }
+    .navbar-custom .nav-link {
+        color: #000 !important;
+    }
+
+    .navbar-custom .nav-link:hover,
+    .navbar-custom .nav-link.active {
+        color: #e91e63 !important;
+        font-weight: bold;
+    }
+
+    #inicio {
+        font-size: 1.25rem;
+        font-weight: 500;
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    .hover-effect {
+         transition: all 0.3s ease;
+        border-radius: 12px; 
+        background-color: #f8f9fa;
+    }
+    .hover-effect:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+         transform: scale(1.05);
+          background-color: #ffffff;
+    }
+    #nome{
+        font-size:25px;
+    }
+    .nav-item{
+        font-size:20px;
+    }
+    #inicio{
+        font-size:30px;
+    }
+    #boasvindas{
+        font-size:35px;
+    }
+    #per1{
+        font-size:20px;
+    }
+    #per2{
+        font-size:20px;
+    }
+    #per3{
+        font-size:20px;
+    }
+    #answer-text{
+        font-size:20px;
+    }
+    #tituloTrabalho{
+        font-size:30px;
+    }
+    #tt_trabalhos{
+        font-size:30px;
+    }
+    #tt_contato{
+        font-size:30px;
+    }
+     i{
+      color: black;
+    }
+    #tt_login{
+        font-size:30px;
+    }
