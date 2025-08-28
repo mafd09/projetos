@@ -1,0 +1,61 @@
+
+body{
+        font-family: 'Montserrat', sans-serif;
+    }
+    .navbar {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.76);
+    }
+    .hover-effect {
+         transition: all 0.3s ease;
+        border-radius: 12px; 
+        background-color: #f8f9fa;
+    }
+    .hover-effect:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+         transform: scale(1.05);
+          background-color: #ffffff;
+    }
+    #nome{
+        font-size:25px;
+    }
+     #rodape{
+         display: flex;
+        flex-direction: row; 
+        list-style: none;
+    }
+    .nav-item{
+        font-size:20px;
+    }
+    #inicio{
+        font-size:30px;
+    }
+    #boasvindas{
+        font-size:35px;
+    }
+    #per1{
+        font-size:20px;
+    }
+    #per2{
+        font-size:20px;
+    }
+    #per3{
+        font-size:20px;
+    }
+    #answer-text{
+        font-size:20px;
+    }
+    #tituloTrabalho{
+        font-size:30px;
+    }
+    #tt_trabalhos{
+        font-size:30px;
+    }
+    #tt_contato{
+        font-size:30px;
+    }
+     i{
+      color: black;
+    }
+    #tt_login{
+        font-size:30px;
+    }
