@@ -1,449 +1,184 @@
-<?php
-require_once("conexao.php");
-require_once("codigo.php");
-?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meu Portfólio</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-    crossorigin="anonymous"
-  />
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-    crossorigin="anonymous"
-    defer
-  ></script>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-  />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: "Montserrat", sans-serif;
-      padding-bottom: 70px; /* espaço para rodapé fixo */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" 
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" 
+            crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="style.css">
+    <style>
+        #home{
+        background-color: rgba(100, 97, 97, 0.24);
+        border-radius: 10px;
     }
-    .navbar {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.76);
+    img{
+        width:20px;
+        height:20px;
     }
-    .hover-effect {
-      transition: all 0.3s ease;
-      border-radius: 12px;
-      background-color: #f8f9fa;
-      cursor: pointer;
+    #rodape{
+         display: flex;
+        flex-direction: row; 
+        list-style: none;
     }
-    .hover-effect:hover {
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-      transform: scale(1.05);
-      background-color: #ffffff;
-    }
-    #nome {
-      font-size: 25px;
-    }
-    #rodape {
-      display: flex;
-      flex-direction: row;
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-      font-size: 14px;
-      color: #333;
-      align-items: center;
-    }
-    #rodape li {
-      margin: 0 10px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    #rodape i {
-      color: black;
-      font-size: 18px;
-    }
-    .nav-item {
-      font-size: 20px;
-    }
-    #inicio {
-      font-size: 30px;
-    }
-    #boasvindas {
-      font-size: 35px;
-    }
-    #per1,
-    #per2,
-    #per3 {
-      font-size: 20px;
-    }
-    #answer-text {
-      font-size: 20px;
-    }
-    #tituloTrabalho,
-    #tt_trabalhos,
-    #tt_contato,
-    #tt_login {
-      font-size: 30px;
-    }
-    i {
-      color: black;
-    }
-    /* Custom styling to center navbar links evenly */
-    .navbar-nav {
-      width: 100%;
-      justify-content: space-evenly;
-    }
-    /* Conhecimentos */
-    .img-conhecimento {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-    }
-    #infoconhecimentos {
-      font-size: 30px;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-    #conhecimentos {
-      background-color: rgba(100, 97, 97, 0.24);
-      border-radius: 10px;
-      padding: 20px;
-    }
-    #imghtml {
-      mix-blend-mode: multiply;
-      background: transparent;
-    }
-    /* Formulario contato */
-    .form-compacta {
-      max-width: 400px;
-      margin: 2rem auto;
-    }
-    .btn-preto {
-      background-color: #000;
-      color: #fff;
-      border: none;
-    }
-    .btn-preto:hover {
-      background-color: #333;
-      color: #fff;
-    }
-    #contato-form {
-      background-color: rgba(100, 97, 97, 0.24);
-      border-radius: 10px;
-      padding: 20px;
-      max-width: 450px;
-      margin: 2rem auto;
-    }
-  </style>
+</style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-light mb-4">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#" id="nome">meu portifólio</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarContent"
-        aria-controls="navbarContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html" id="home"
-              >Home <i class="bi bi-house"></i
-            ></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="conhecimentos.html" id="conhecimentos"
-              >Conhecimentos <i class="bi bi-lightbulb"></i
-            ></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="trabalhos.html" id="trabalhos"
-              >Trabalhos <i class="bi bi-briefcase"></i
-            ></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contato.html" id="contato"
-              >Contato <i class="bi bi-chat-dots-fill"></i
-            ></a>
-          </li>
-          <li class="nav-item">
-            <form action="" method="POST" class="d-inline">
-              <button
-                name="destruir"
-                class="btn btn-link nav-link"
-                type="submit"
-                style="cursor: pointer;"
-              >
-                <i class="bi bi-box-arrow-left"></i>
-              </button>
-            </form>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Conteúdo principal -->
-  <div class="container text-center">
-    <div class="row mb-4">
-      <p id="inicio">
-        olá meu nome é Marco Antonio e este é meu portifólio <br />
-        nele eu falarei um pouco sobre mim, meus conhecimentos, trabalhos e
-        objetivos
-      </p>
-    </div>
-    <div class="row mb-5">
-      <p id="boasvindas">Boa Leitura!! <i class="bi bi-book-fill"></i></p>
-    </div>
-  </div>
-
-  <!-- Perguntas clicáveis -->
-  <div class="container text-center mb-5">
-    <div class="row">
-      <div
-        class="col align-self-center hover-effect p-3 clickable-question"
-        data-answer="Nome: Marco Antônio Freitas Dias &lt;br&gt;
-Idade: 16 anos&lt;br&gt;
-Onde moro: Ilhabela, SP&lt;br&gt;
-Um pouco sobre mim:&lt;br&gt;
-Nasci no dia 18/07/2009, em Curitiba–PR. Desde que nasci, meu pai construía um barco e, quando eu tinha 5 anos, esse barco foi para a água. Aos 10 anos, mais especificamente no dia 24 de agosto de 2019, fomos morar nele.&lt;br&gt;
-Desde então, subi a costa do Brasil de veleiro junto com meu pai, minha mãe e meu cachorro. Quando a pandemia chegou, ficamos em Ubatuba e, depois que passou, fomos para Salvador, na Bahia. Lá moramos por cerca de um ano, até que, em 2022, vendemos o barco, compramos um maior e começamos a descer a costa em direção a Ilhabela.&lt;br&gt;
-Aqui estudei por 2 anos na Escola Mércia (8º e 9º ano) e, atualmente, faço o 2º ano na ETEC, em São Sebastião (onde também cursei o 1º ano)."
-      >
-        <p id="per1">quem sou eu?</p>
-      </div>
-      <div
-        class="col align-self-center hover-effect p-3 clickable-question"
-        data-answer="<strong>Hobbies:</strong> Gosto de velejar, pescar, navegar, desenhar e programar. &lt;br&gt; <strong>Interesses:</strong> Desenvolvimento Web, tecnologia e esportes."
-      >
-        <p id="per2">quais meus hobbies?</p>
-      </div>
-      <div
-        class="col align-self-center hover-effect p-3 clickable-question"
-        data-answer="Meu objetivo é me tornar um programador full stack, trabalhando em projetos web que possam impactar positivamente as pessoas. Quero continuar aprendendo e evoluindo constantemente na área de tecnologia."
-      >
-        <p id="per3">qual meu objetivo?</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="container text-center mb-5">
-    <p id="answer-text" class="fw-bold"></p>
-  </div>
-
-  <!-- Trabalhos -->
-  <div class="container mt-5 mb-5">
-    <h1 class="text-center" id="tituloTrabalho">
-      Trabalhos <i class="bi bi-briefcase"></i>
-    </h1>
-    <div class="row justify-content-center mt-4 g-4">
-      <div class="col-12 col-md-4 hover-effect p-3 rounded shadow">
-        <a href="https://google.com" target="_blank" class="text-decoration-none text-dark">
-          <img src="foto/marco.jpeg" class="img-fluid rounded mb-3" alt="Projeto Marco" />
-          <h3 class="fw-bold">Projeto Marco</h3>
-          <p>Projeto pessoal realizado para aprendizado e demonstração.</p>
-        </a>
-      </div>
-      <div class="col-12 col-md-4 hover-effect p-3 rounded shadow">
-        <a href="https://example.com" target="_blank" class="text-decoration-none text-dark">
-          <img src="foto/trabalho2.jpg" class="img-fluid rounded mb-3" alt="Projeto Trabalho 2" />
-          <h3 class="fw-bold">Projeto Trabalho 2</h3>
-          <p>Projeto acadêmico focado em desenvolvimento web.</p>
-        </a>
-      </div>
-      <div class="col-12 col-md-4 hover-effect p-3 rounded shadow">
-        <a href="https://example2.com" target="_blank" class="text-decoration-none text-dark">
-          <img src="foto/trabalho3.jpg" class="img-fluid rounded mb-3" alt="Projeto Trabalho 3" />
-          <h3 class="fw-bold">Projeto Trabalho 3</h3>
-          <p>Projeto freelance desenvolvido para cliente.</p>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Conhecimentos -->
-  <div class="container text-center" id="conhecimentos">
-    <p id="infoconhecimentos">Aqui estão meus conhecimentos</p>
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-4 p-4 rounded shadow bg-light d-flex flex-column align-items-center">
-        <img
-          src="foto/html.png"
-          class="img-fluid mb-2 img-conhecimento"
-          alt="HTML"
-          id="imghtml"
-        />
-        <div class="w-75 mb-3">
-          <div class="progress">
-            <div
-              class="progress-bar bg-danger"
-              role="progressbar"
-              style="width: 80%"
-              aria-valuenow="80"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              id="htmlbar"
-            >
-              80%
-            </div>
-          </div>
+      <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg mb-5">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="">
+                        <ul class="navbar-nav w-100 justify-content-evenly">
+                            <li class="nav-item" id="nome">
+                                <a class="nav-link active" aria-current="page" href="#">meu portifólio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html" id="home">Home <i class="bi bi-house"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="conhecimentos.html" id="conhecimentos">Conhecimentos <i class="bi bi-lightbulb"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="trabalhos.html" id="trabalhos">Trabalhos <i class="bi bi-briefcase"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contato.html" id="contato">Contato <i class="bi bi-chat-dots-fill"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="gerenciar.html" ><i class="bi bi-gear"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-
-        <img src="foto/css.webp" class="img-fluid mb-2 img-conhecimento" alt="CSS" />
-        <div class="w-75 mb-3">
-          <div class="progress">
-            <div
-              class="progress-bar bg-info"
-              role="progressbar"
-              style="width: 80%"
-              aria-valuenow="80"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              80%
-            </div>
-          </div>
-        </div>
-
-        <img src="foto/js.png" class="img-fluid mb-2 img-conhecimento" alt="JavaScript" />
-        <div class="w-75 mb-3">
-          <div class="progress">
-            <div
-              class="progress-bar bg-warning"
-              role="progressbar"
-              style="width: 40%"
-              aria-valuenow="40"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              40%
-            </div>
-          </div>
-        </div>
-
-        <img src="foto/nodejs.png" class="img-fluid mb-2 img-conhecimento" alt="NodeJS" />
-        <div class="w-75 mb-3">
-          <div class="progress">
-            <div
-              class="progress-bar bg-success"
-              role="progressbar"
-              style="width: 10%"
-              aria-valuenow="10"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              10%
-            </div>
-          </div>
-        </div>
-
-        <img src="foto/php.png" class="img-fluid mb-2 img-conhecimento" alt="PHP" />
-        <div class="w-75 mb-3">
-          <div class="progress">
-            <div
-              class="progress-bar bg-primary"
-              role="progressbar"
-              style="width: 50%"
-              aria-valuenow="50"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              50%
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-
-  <!-- Formulário de Contato -->
-  <div class="container" id="contato-form">
-    <h2 class="text-center mb-4" id="tt_contato">
-      Formulário de Contato <i class="bi bi-envelope"></i>
-    </h2>
-    <form action="envia_email.php" method="POST" class="form-compacta mx-auto">
-      <div class="mb-3">
-        <label for="nome" class="form-label">Nome:</label>
-        <input
-          type="text"
-          id="nome"
-          name="nome"
-          class="form-control"
-          required
-          placeholder="Digite seu nome"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          class="form-control"
-          required
-          placeholder="Digite seu email"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="mensagem" class="form-label">Mensagem:</label>
-        <textarea
-          id="mensagem"
-          name="mensagem"
-          class="form-control"
-          rows="4"
-          required
-          placeholder="Escreva sua mensagem"
-        ></textarea>
-      </div>
-      <button type="submit" class="btn btn-preto w-100">Enviar</button>
-    </form>
-  </div>
-
-  <!-- Rodapé -->
-  <footer class="bg-light py-3 fixed-bottom">
-    <div class="container d-flex justify-content-center">
-      <ul id="rodape">
-        <li>
-          <i class="bi bi-envelope-fill"></i> marcoantoniotdias@gmail.com
-        </li>
-        <li>
-          <i class="bi bi-phone-fill"></i> +55 12 98888-7777
-        </li>
-        <li>
-          <i class="bi bi-whatsapp"></i> +55 12 98888-7777
-        </li>
-      </ul>
+    <div class="container text-center mt-3">
+        <div class="row">
+            <p id="inicio">olá meu nome é Marco Antonio e este é meu portifólio <br> nele eu falarei um pouco sobre mim, meus conhecimentos, trabalhos e objetivos </p>
+        </div>
+        <div class="row">
+            <p id="boasvindas">Boa Leitura!! <i class="bi bi-book-fill"></i></p>
+        </div>
     </div>
-  </footer>
+    <div class="container text-center mt-5">
+        <div class="row">
+            <div class="col align-self-center clickable-question" 
+                 data-answer="Nome: Marco Antônio Freitas Dias </br>
+Idade: 16 anos</br>
+Onde moro: Ilhabela, SP</br>
 
-  <script>
-    // Perguntas clicáveis script
-    const questions = document.querySelectorAll(".clickable-question");
-    const answerText = document.getElementById("answer-text");
+Um pouco sobre mim:</br>
+Nasci no dia 18/07/2009, em Curitiba–PR. Desde que nasci, meu pai construía um barco e, quando eu tinha 5 anos, esse barco foi para a água. Aos 10 anos, mais especificamente no dia 24 de agosto de 2019, fomos morar nele.
 
-    questions.forEach((question) => {
-      question.addEventListener("click", () => {
-        answerText.innerHTML = question.getAttribute("data-answer");
-      });
-    });
-  </script>
+Desde então, subi a costa do Brasil de veleiro junto com meu pai, minha mãe e meu cachorro. Quando a pandemia chegou, ficamos em Ubatuba e, depois que passou, fomos para Salvador, na Bahia. Lá moramos por cerca de um ano, até que, em 2022, vendemos o barco, compramos um maior e começamos a descer a costa em direção a Ilhabela.
+
+Aqui estudei por 2 anos na Escola Mércia (8º e 9º ano) e, atualmente, faço o 2º ano na ETEC, em São Sebastião (onde também cursei o 1º ano).">
+                <p id="per1">quem sou eu?</p>
+            </div>
+            <div class="col align-self-center clickable-question" 
+                 data-answer="<ul style='list-style-type: none;'>
+    <li>
+       <i class='bi bi-book'></i> ler livros
+    </li>
+    <li>
+       <i class='bi bi-laptop'></i> programar
+    </li>
+    <li>
+       <i class='bi bi-joystick'></i> jogar
+    </li>
+    <li>
+       <i class='bi bi-activity'></i> treinar na academia
+    </li>
+    <li>
+      <i class='bi bi-bicycle'></i> fazer esporte 
+    </li>
+    <li>
+       <i class='bi bi-plus'></i> aprender coisas novas
+    </li>
+</ul>">
+               <p id="per2">o que gosto de fazer?</p>
+            </div>
+            <div class="col align-self-center clickable-question" 
+                 data-answer="Atualmente, sou estudante do 2º ano do Ensino Médio integrado ao curso técnico na ETEC de São Sebastião, instituição pertencente ao Centro Paula Souza.
+
+Iniciei meus estudos na ETEC em 2024, onde tenho a oportunidade de conciliar a formação do ensino médio regular com uma qualificação profissional técnica. A escola conta com excelente infraestrutura, como laboratórios de informática bem equipados, biblioteca atualizada e um corpo docente qualificado.
+
+Ao longo da minha trajetória na instituição, venho desenvolvendo conhecimentos nas seguintes áreas:
+
+<ul> <li>Programação</li> <li>Matemática aplicada à programação</li> <li>Educação financeira</li> </ul>
+
+A metodologia da escola integra teoria e prática, preparando os alunos tanto para o vestibular quanto para o mercado de trabalho. Também tenho participado ativamente de projetos extracurriculares e eventos tecnológicos promovidos pela instituição.
+
+Estou muito satisfeito com a qualidade do ensino e com as oportunidades que a ETEC de São Sebastião tem proporcionado para minha formação acadêmica e profissional.">
+                <p id="per3">onde estudo?</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container mt-4">
+        <div class="col">
+            <p id="answer-text" class="text-center p-3 bg-light rounded">Clique em uma das perguntas acima para ver a resposta.</p>
+        </div>
+    </div>
+      <div class="container fixed-bottom">
+        <div class="row">
+            <ul id="rodape"class="justify-content-evenly">
+                <li>
+                    <i class="bi bi-instagram"> Instagram (mafd09)</i>
+                </li>
+                <li>
+                    <i class="bi bi-envelope"> Email (mafd09@gmail.com)</i>
+                </li>
+                <li>
+                    <i class="bi bi-linkedin"> Linkedin (xxxxx)</i>
+                </li>
+                <li>
+                <i class="bi bi-whatsapp">WhatsApp ((xx) xxxx-xxxx)</i>
+                </li>
+                <li>
+                    <i class="bi bi-facebook"> Facebook</i>
+                </li>
+                <li>
+                    <i class="bi bi-twitter-x"> X</i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const questions = document.querySelectorAll('.clickable-question');
+            const answerText = document.getElementById('answer-text');
+            
+            questions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.getAttribute('data-answer');
+                    answerText.innerHTML = answer;
+                    
+                    answerText.classList.add('bg-info', 'text-white');
+                    setTimeout(() => {
+                        answerText.classList.remove('bg-info', 'text-white');
+                        answerText.classList.add('bg-light');
+                    }, 300);
+                });
+            });
+            
+            questions.forEach(question => {
+                question.style.cursor = 'pointer';
+                question.classList.add('p-3', 'hover-effect');
+            });
+        });
+    </script>
 </body>
-</html>
+</html> 
